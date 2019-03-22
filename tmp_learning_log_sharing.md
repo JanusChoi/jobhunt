@@ -39,6 +39,32 @@
 花了将近一小时做这个（还非常难看）：
 ![](https://ws1.sinaimg.cn/large/006tKfTcgy1g1ag06g4b6j30nu0iewfq.jpg)
 
+使用微信官方UI边抄边改之后完成了这个很丑的表单页面：
+![](https://ws1.sinaimg.cn/large/006tKfTcgy1g1blyfz3j0j30u01o075k.jpg)
+
+下一步要考虑的就是如何在按“确定”之后把数据上传到服务器了。看了一下服务器配置的成本，包括买云服务和域名的价钱和备案的流程，太繁琐了，而且暂时还不想花钱，所以暂时放弃了使用服务器后端的想法。
+
+最终在页面上直接生成可复制的 MarkDown 文本如下：
+![](https://ws4.sinaimg.cn/large/006tKfTcgy1g1bz1udbvnj30940g0jso.jpg)
+
+一些笔记：
+- 用户输入的html组件必须有name，才能在提交form的时候以json格式一次性获取
+- 只有text元素能够设置为可复制
+- 使用```JSON.stringify```转换出来的字符串是自带双引号的，所以还要在后面加上```.replace(/"/g, '')```来替换掉
+
+## Info 资源检索及可复用部分
+
+因为自己动手调整CSS比较费时，干脆直接找来示例项目抄着来做会比较快，众所周知，最大的公开免费代码库就是github了，简单的搜索之后再github找到的一些关于小程序的资源：
+
+https://github.com/justjavac/awesome-wechat-weapp
+https://github.com/opendigg/awesome-github-wechat-weapp
+
+微信官方提供的UI库：https://github.com/Tencent/weui-wxss
+把文件加入项目中之后，用类似下面语句在app.wxss中引用
+```
+@import 'style/weui.wxss';
+```
+
 ## ChangLog
 190320
 （21m） 注册小程序，下载官方开发文档及工具；官方教程学习：完成起步一章，代码构成一章浏览完毕
@@ -46,3 +72,12 @@
 (27m) 在示例项目上尝试：改css样式，做按钮，页面跳转
 (37m) 查看小程序文档，浏览示例程序结构，大概了解每个部分的作用；确定后续开发步骤
 (52m) 尝试做出CRM教师入口页面
+190322
+(52m) 导入微信官方css样式，应用到我的表单上
+(25m) 修改表单样式，调试
+(79m) 研究让小程序收集用户输入之后，按一定格式生成文件并保存到本地的方法（因为暂时没钱配一台服务器）
+(43m) 尝试查找在小程序内处理json结构数据的办法，分别取值再重新拼成结构化文本
+(45m) 完成老师课程复盘表单
+
+TotalCost：381m
+Progress：31.75%
